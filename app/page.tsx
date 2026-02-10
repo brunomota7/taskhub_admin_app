@@ -5,16 +5,24 @@ import Image from "next/image";
 
 import Logo from "@/public/logo.png";
 import { useThemeColor } from "@/hooks/useThemeColor";
-import Button from "@/components/Button/button";
-import Input from "@/components/Input/Input";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
+import { Label } from "@/components/ui/label";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function Home() {
   const backgroundColor = useThemeColor({}, "background");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [secure, setSecure] = useState(true);
 
   const handleLogin = () => {
     console.log({ email, password });
@@ -22,7 +30,7 @@ export default function Home() {
 
   return (
     <main className="flex h-screen w-full" style={{ backgroundColor }}>
-      <section className="hidden lg:flex w-1/2 bg-[#0a214d] text-white px-16">
+      <section className="hidden lg:flex w-1/2 bg-[#3423A6] text-white px-16">
         <div className="flex flex-col justify-center gap-8 max-w-lg">
           <div className="flex items-center gap-3">
             <Image
@@ -50,43 +58,48 @@ export default function Home() {
       </section>
 
       <section className="flex w-full lg:w-1/2 items-center justify-center px-6">
-        <div className="w-full max-w-md">
-          <div className="mb-8 flex flex-col gap-2">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Acesso administrativo
-            </h2>
-            <p className="text-sm text-gray-500">
+        <Card className="w-full max-w-md shadow-lg">
+          <CardHeader className="space-y-1">
+            <CardTitle className="text-2xl">Acesso administrativo</CardTitle>
+            <CardDescription>
               Entre com suas credenciais para continuar
+            </CardDescription>
+          </CardHeader>
+
+          <CardContent className="space-y-6">
+            <div className="space-y-2">
+              <Label htmlFor="email">E-mail</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="admin@taskhub.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="password">Senha</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            <Button className="w-full bg-[#1380ed]" onClick={handleLogin}>
+              Entrar
+            </Button>
+
+            <Separator />
+
+            <p className="text-center text-sm text-muted-foreground">
+              Acesso restrito a administradores
             </p>
-          </div>
-
-          <form className="flex flex-col gap-4">
-            <Input
-              label="Email"
-              type="email"
-              placeholder="exemplo@exemplo.com"
-              value={email}
-              onChangeText={setEmail}
-            />
-
-            <Input
-              label="Senha"
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry={secure}
-              onToggleSecureEntry={() => setSecure((prev) => !prev)}
-            />
-
-            <Button
-              title="Entrar"
-              onPress={handleLogin}
-              style="mt-4 w-full"
-              disabled={!email || !password}
-            />
-          </form>
-        </div>
+          </CardContent>
+        </Card>
       </section>
     </main>
   );
