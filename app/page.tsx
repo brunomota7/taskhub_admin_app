@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 
 import Logo from "@/public/logo.png";
-import { useThemeColor } from "@/hooks/useThemeColor";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,8 +18,6 @@ import {
 } from "@/components/ui/card";
 
 export default function Home() {
-  const backgroundColor = useThemeColor({}, "background");
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -29,7 +26,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex h-screen w-full" style={{ backgroundColor }}>
+    <main className="flex h-screen w-full">
       <section className="hidden lg:flex w-1/2 bg-[#3423A6] text-white px-16">
         <div className="flex flex-col justify-center gap-8 max-w-lg">
           <div className="flex items-center gap-3">

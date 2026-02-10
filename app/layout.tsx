@@ -24,11 +24,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-br" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="light">
+        <ThemeProvider 
+          attribute="class" 
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
         </ThemeProvider>
       </body>

@@ -1,11 +1,11 @@
 "use client";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import Header from "@/components/header-main";
 
 export default function DashboardPage() {
-    const backgroundColor = useThemeColor({}, "background");
 
     return (
-        <main className="w-full h-full" style={{ backgroundColor }}>
+        <main className="w-full h-full">
+            <Header />
         </main>
     );
 }
