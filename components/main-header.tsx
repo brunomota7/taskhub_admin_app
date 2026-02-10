@@ -3,6 +3,7 @@ import Image from "next/image";
 import Logo from "@/public/logo.png";
 import { ModeToggle } from "./modeToggle";
 import { UserMenu } from "./user-menu";
+import { MainNavigation } from "./main-navigation";
 
 export default function Header() {
   return (
@@ -18,6 +19,8 @@ export default function Header() {
         />
         <span className="text-lg font-extrabold tracking-tight">TaskHub</span>
       </div>
+
+      <MainNavigation />
 
       <div className="flex items-center gap-4">
         <ModeToggle />
