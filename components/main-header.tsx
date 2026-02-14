@@ -7,7 +7,7 @@ import { MainNavigation } from "./main-navigation";
 
 export default function Header() {
   return (
-    <header className="flex h-[60px] w-full items-center justify-between border-b px-6">
+    <header className="sticky top-0 z-50 flex h-[60px] w-full items-center justify-between border-b px-6 bg-background/90 backdrop-blur">
       <div className="flex items-center gap-2">
         <Image
           src={Logo}
